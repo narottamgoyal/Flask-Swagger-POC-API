@@ -8,7 +8,7 @@ todoRequestDto = api.model('TodoReqDto', {
     'task_name': fields.String(required=True, description='The task details')
 })
 
-todoResponseDto = api.model('Todo', {
+todoResponseDto = api.model('TodoResponseDto', {
     'id': fields.Integer(readOnly=True, description='The task unique identifier'),
     'task_name': fields.String(required=True, description='The task details')
 })

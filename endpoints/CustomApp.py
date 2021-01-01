@@ -1,12 +1,8 @@
 from flask import request
-from flask_restplus import Resource, fields
+from flask_restplus import Resource
 from endpoints.restapi import api
 
 ns = api.namespace('CustomApp', description='Custom operations')
-custom_request_dto = api.model('CustomReqDto', {
-    'year': fields.String(required=True, description='Year details'),
-    'month': fields.String(required=False, description='Month task details')
-})
 
 
 @ns.route('/api/v1/')
@@ -15,7 +11,7 @@ class CustomGet(Resource):
     @ns.response(204, 'Todo deleted')
     @ns.doc('CustomGet')
     def get(self):
-        """Get with no query param"""
+        """Simple Get with no param"""
         return "Custom app"
 
 
@@ -23,6 +19,7 @@ class CustomGet(Resource):
 @api.doc(params={'mobile': {'description': 'mobile number is required'},
                  'address': {'description': 'address is optional', 'default': None}})
 class MyResource(Resource):
+
     @api.doc(responses={200: 'OK'})
     @ns.response(204, 'Todo deleted')
     @ns.doc('CustomGet with query param')
@@ -37,3 +34,14 @@ class MyResource(Resource):
         email = request.args.get('email')
         address = request.args.get('address')
         return {'mobile': mobile, 'address': address, 'email': email}
+
+    @ns.doc('custom delete')
+    @ns.response(204, 'deleted')
+    def delete(self, mobile):
+        """Delete with mobile number"""
+        return {'mobile': mobile}
+
+    @ns.doc('custom update')
+    def put(self, mobile):
+        """"Update with mobile number"""
+        return {'mobile': mobile}
