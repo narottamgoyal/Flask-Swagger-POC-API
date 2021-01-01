@@ -28,7 +28,7 @@ class MyResource(Resource):
         address = request.args.get('address')
         return {'mobile': mobile, 'address': address}
 
-    @api.doc(params={'email': {'description': 'email is optional'}})
+    @api.doc(params={'email': {'description': 'email is optional', 'default': 'default@email.com'}})
     def post(self, mobile):
         """Post with one required & 2 query param"""
         email = request.args.get('email')
