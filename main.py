@@ -1,7 +1,7 @@
 from flask import Flask, Blueprint
 from endpoints.CustomApp import ns as custom_namespace
 from endpoints.TodoApp import ns as todo_namespace
-from endpoints.restplus import api
+from endpoints.restapi import api
 
 app = Flask(__name__)
 blueprint = Blueprint('api', __name__)

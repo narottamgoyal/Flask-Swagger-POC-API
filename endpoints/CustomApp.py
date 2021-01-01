@@ -1,5 +1,5 @@
 from flask_restplus import Resource
-from endpoints.restplus import api
+from endpoints.restapi import api
 
 ns = api.namespace('CustomApp', description='Custom operations')
 

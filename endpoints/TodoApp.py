@@ -1,6 +1,6 @@
 from flask_restplus import Api, Resource, fields
 from TodoDto import TodoDto
-from endpoints.restplus import api
+from endpoints.restapi import api
 
 ns = api.namespace('TodoApp', description='Todo operations')
 
