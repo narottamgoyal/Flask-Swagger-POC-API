@@ -8,7 +8,7 @@ ns = api.namespace('CustomApp', description='Custom operations')
 @ns.route('/api/v1/')
 class CustomGet(Resource):
     @api.doc(responses={200: 'OK'})
-    @ns.response(204, 'Todo deleted')
+    @ns.response(204, 'No Content')
     @ns.doc('CustomGet')
     def get(self):
         """Simple Get with no param"""
@@ -21,7 +21,7 @@ class CustomGet(Resource):
 class MyResource(Resource):
 
     @api.doc(responses={200: 'OK'})
-    @ns.response(204, 'Todo deleted')
+    @ns.response(204, 'No Content')
     @ns.doc('CustomGet with query param')
     def get(self, mobile):
         """Get with one required & 1 query param"""
@@ -41,6 +41,7 @@ class MyResource(Resource):
         """Delete with mobile number"""
         return {'mobile': mobile}
 
+    @ns.response(204, 'updated')
     @ns.doc('custom update')
     def put(self, mobile):
         """"Update with mobile number"""
